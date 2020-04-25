@@ -12,7 +12,6 @@ import com.shopping.shoppingCart.model.Customer;
 import com.shopping.shoppingCart.model.DiscountRange;
 import com.shopping.shoppingCart.model.Slab;
 
-
 /*************************************************************
  * 
  * @author devanshu.chaurasia
@@ -21,7 +20,6 @@ import com.shopping.shoppingCart.model.Slab;
  * allocated to the customer.
  *
  *************************************************************/
-
 @Service
 public class ShoppingService {
 	
@@ -31,9 +29,9 @@ public class ShoppingService {
 	public Customer findCustomer(long customerId) {
 		List<Customer> custList = shoppingDao.getCustomers();
 		Customer customer=null;
-		for(int i=0;i<custList.size();i++) {
-			if(custList.get(i).getCustomerId()==customerId) {
-				customer = custList.get(i);
+		for(int index=0;index<custList.size();index++) {
+			if(custList.get(index).getCustomerId()==customerId) {
+				customer = custList.get(index);
 				break;
 			}
 		}
