@@ -1,5 +1,14 @@
 package com.shopping.shoppingCart.model;
 
+/*************************************************************
+ * 
+ * @author devanshu.chaurasia
+ * Regular Customer model class to define Regular customers
+ * New Customer Types can be created by implementing Customer
+ * interface.
+ *
+ *************************************************************/
+
 public class RegularCustomer implements Customer{
 	
 	private long customerId;

@@ -15,6 +15,14 @@ import com.shopping.shoppingCart.model.RegularCustomer;
 import com.shopping.shoppingCart.model.RegularSlab;
 import com.shopping.shoppingCart.model.Slab;
 
+
+/*************************************************************
+ * 
+ * @author devanshu.chaurasia
+ * Class to imitate DAO Layer
+ *
+ *************************************************************/
+
 @Component
 public class ShoppingDaoImpl {
 	
@@ -24,6 +32,7 @@ public class ShoppingDaoImpl {
 	ShoppingDaoImpl(){
 		regularCustList= new ArrayList<>();
 		premCustList= new ArrayList<>();
+		
 		CustomerFactory factory = new CustomerFactory();
 		RegularCustomer cust2= (RegularCustomer) factory.getCustomer("Regular");
 		cust2.setCustomerId(2);
@@ -32,6 +41,7 @@ public class ShoppingDaoImpl {
 		regularCustList.add(cust1);
 		regularCustList.add(cust2);
 		customerMap.put(new RegularSlab(), regularCustList);
+		
 		PremiumCustomer cust3= (PremiumCustomer) factory.getCustomer("Premium");
 		cust3.setCustomerId(3);
 		PremiumCustomer cust4= (PremiumCustomer) factory.getCustomer("Premium");

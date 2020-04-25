@@ -4,6 +4,14 @@ import com.shopping.shoppingCart.model.PremiumSlab;
 import com.shopping.shoppingCart.model.RegularSlab;
 import com.shopping.shoppingCart.model.Slab;
 
+/*************************************************************
+ * 
+ * @author devanshu.chaurasia
+ * Slab Factory Class to produce slabs according to 
+ * customer Type
+ *
+ *************************************************************/
+
 public class SlabFactory {
 
 	public Slab getSlab(String slabType){

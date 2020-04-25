@@ -1,5 +1,12 @@
 package com.shopping.shoppingCart.model;
 
+/*************************************************************
+ * 
+ * @author devanshu.chaurasia
+ * Premium Customer model class to define premium customers
+ *
+ *************************************************************/
+
 public class PremiumCustomer implements Customer{
 	
 	private String customerType="Premium";

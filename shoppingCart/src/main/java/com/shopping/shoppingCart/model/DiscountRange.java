@@ -1,5 +1,13 @@
 package com.shopping.shoppingCart.model;
 
+/*************************************************************
+ * 
+ * @author devanshu.chaurasia
+ * Model Class to depict a discount range and applicable 
+ * discount rate
+ *
+ *************************************************************/
+
 public class DiscountRange implements Comparable{
 	
 	private int upperRange;

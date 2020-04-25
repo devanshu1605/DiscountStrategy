@@ -4,6 +4,14 @@ import com.shopping.shoppingCart.model.Customer;
 import com.shopping.shoppingCart.model.PremiumCustomer;
 import com.shopping.shoppingCart.model.RegularCustomer;
 
+/*************************************************************
+ * 
+ * @author devanshu.chaurasia
+ * Customer Factory Class to produce Customers and set their
+ * customer Type
+ *
+ *************************************************************/
+
 public class CustomerFactory {
 	
 	public Customer getCustomer(String customerType){

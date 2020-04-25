@@ -1,12 +1,17 @@
 package com.shopping.shoppingCart.model;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+/*************************************************************
+ * 
+ * @author devanshu.chaurasia
+ * Model Class to represent Premium Slab type Discount rate
+ *
+ *************************************************************/
+
 public class PremiumSlab implements Slab{
+	
 
 	@Override
 	public String getSlabType() {

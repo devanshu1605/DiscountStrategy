@@ -1,20 +1,28 @@
 package com.shopping.shoppingCart.service;
 
+import java.util.List;
+import java.util.Set;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.shopping.shoppingCart.dao.ShoppingDaoImpl;
 import com.shopping.shoppingCart.factory.SlabFactory;
 import com.shopping.shoppingCart.model.Customer;
 import com.shopping.shoppingCart.model.DiscountRange;
 import com.shopping.shoppingCart.model.Slab;
 
-import java.util.List;
-import java.util.Set;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
+/*************************************************************
+ * 
+ * @author devanshu.chaurasia
+ * Service Class to handle business logic for calculating 
+ * Discounted price based on customer, amount and slab 
+ * allocated to the customer.
+ *
+ *************************************************************/
 
 @Service
-@Component
 public class ShoppingService {
 	
 	@Autowired
@@ -22,30 +30,24 @@ public class ShoppingService {
 	
 	public Customer findCustomer(long customerId) {
 		List<Customer> custList = shoppingDao.getCustomers();
-		Customer cust=null;
+		Customer customer=null;
 		for(int i=0;i<custList.size();i++) {
 			if(custList.get(i).getCustomerId()==customerId) {
-				cust = custList.get(i);
+				customer = custList.get(i);
 				break;
 			}
 		}
-		return cust;
+		return customer;
 	}
 	
 	public long calculatePriceForCustomer(long billingAmount, long customerid) {
 		Customer cust= findCustomer(customerid);
 		if(null!=cust) {
-			
 			Set<DiscountRange> discountRangeList = getDiscountSlab(cust.getSlab());
 			return getFinalPrice(discountRangeList, billingAmount);
 		}else {
 			return 0;
 		}
-	}
-
-	private long calculateBill(long discountPercentage, long amount) {
-		long value= amount-(amount*discountPercentage)/100;
-		return value;
 	}
 	
 	public Set<DiscountRange> getDiscountSlab(String slabType) {
@@ -69,7 +71,6 @@ public class ShoppingService {
 					long temp = calculateBill(discountRange.getdiscountRate(), discountRange.getUpperRange()-discountRange.getLowerRange());
 					finalBillAmount= finalBillAmount+temp;
 				}else {
-					
 					long temp=calculateBill(discountRange.getdiscountRate(),billingAmount-discountRange.getLowerRange());
 					finalBillAmount= finalBillAmount+temp;
 				    break;
@@ -82,6 +83,11 @@ public class ShoppingService {
 			}
 		}
 		return finalBillAmount;
+	}
+	
+
+	private long calculateBill(long discountPercentage, long amount) {
+		return (amount-(amount*discountPercentage)/100);
 	}
 
 }
