@@ -50,5 +50,9 @@ public class DiscountRange implements Comparable{
 	public int compareTo(Object o) {
 		return this.discountRate-((DiscountRange)o).discountRate;
 	}
+	
+	public String toString() {
+		return this.lowerRange+" : "+this.upperRange+" : "+this.discountRate;
+	}
     
 }

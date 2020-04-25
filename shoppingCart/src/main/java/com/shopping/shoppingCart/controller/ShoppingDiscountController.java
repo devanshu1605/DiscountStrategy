@@ -23,13 +23,13 @@ public class ShoppingDiscountController {
 		return service.findCustomer(customerId);
 	}
 	
-	@GetMapping("/getCustomer/{customerId}/{billingAmount}")
+	@GetMapping("/getCustomerPrice/{customerId}/{billingAmount}")
 	public long calculatePriceForCustomer(@PathVariable long customerId, @PathVariable long billingAmount) {
 		return service.calculatePriceForCustomer(billingAmount, customerId);
 	}
 	
-	@GetMapping("/getCustomer/{slabType}/{billingAmount}")
-	public long calculatePriceForSlab(@RequestParam long billingAmount, @RequestParam String slabType) {
+	@GetMapping("/getSlabPrice/{slabType}/{billingAmount}")
+	public long calculatePriceForSlab(@PathVariable String slabType, @PathVariable int billingAmount) {
 		return service.calculatePriceForSlab(billingAmount, slabType);
 	}
 

@@ -42,7 +42,8 @@ public class ShoppingService {
 	}
 
 	private long calculateBill(long discountPercentage, long amount) {
-		return (amount*((100-discountPercentage)/100));
+		long value= amount-(amount*discountPercentage)/100;
+		return value;
 	}
 	
 	public Set<DiscountRange> getDiscountSlab(String slabType) {
@@ -62,15 +63,19 @@ public class ShoppingService {
 		
 		for(DiscountRange discountRange : discountRangeList) {
 			if(billingAmount>discountRange.getUpperRange()) {
-				if(discountRange.getUpperRange()!=discountRange.getLowerRange()) {
-				    finalBillAmount= finalBillAmount+calculateBill(discountRange.getUpperRange()-discountRange.getLowerRange(), discountRange.getdiscountRate());
+				if(discountRange.getUpperRange()!=discountRange.getLowerRange()) { 
+					long temp = calculateBill(discountRange.getdiscountRate(), discountRange.getUpperRange()-discountRange.getLowerRange());
+					finalBillAmount= finalBillAmount+temp;
 				}else {
-					finalBillAmount= finalBillAmount+calculateBill(billingAmount-discountRange.getLowerRange(), discountRange.getdiscountRate());
+					
+					long temp=calculateBill(discountRange.getdiscountRate(),billingAmount-discountRange.getLowerRange());
+					finalBillAmount= finalBillAmount+temp;
 				    break;
 				}
 				previousCalculatedUpperValue = discountRange.getUpperRange();
 			}else {
-				finalBillAmount= finalBillAmount+calculateBill(billingAmount-previousCalculatedUpperValue, discountRange.getdiscountRate());
+				long temp=calculateBill(discountRange.getdiscountRate(), billingAmount-previousCalculatedUpperValue);
+				finalBillAmount= finalBillAmount+temp;
 				break;
 			}
 		}
